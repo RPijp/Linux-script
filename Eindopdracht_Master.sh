@@ -69,3 +69,9 @@ sudo apt-get install salt-api -y
 sudo apt-get install salt-cloud -y
 
 sudo apt-get upgrade -y
+
+sudo systemctl restart salt-minion
+
+sed -I ‘s/#interface: 0.0.0.0 /interface: 10.0.61.6/g’ /etc/salt/master
+
+salt-master
