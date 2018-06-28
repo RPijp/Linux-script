@@ -63,10 +63,6 @@ echo deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest bionic main >> 
 
 sudo apt-get update
 sudo apt-get install salt-master -y
-sudo apt-get install salt-ssh -y
-sudo apt-get install salt-syndic -y
-sudo apt-get install salt-api -y
-sudo apt-get install salt-cloud -y
 
 sudo apt-get upgrade -y
 
