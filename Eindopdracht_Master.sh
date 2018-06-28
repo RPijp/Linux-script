@@ -1,8 +1,7 @@
 #!/bin/sh
-# Your commands go under this line
+#This is the script for the master server
 
 #instal monitoring in de form van Cacti
-
 
 apt-get update
 apt-get upgrade
@@ -18,7 +17,7 @@ apt-get install snmp snmpd -y
 apt-get install cacti-spine -y
 #####
 
-#instal logs in de vorm van Syslog-NG
+#instal logs in de vorm van Syslog-NG Master
 
 sudo apt install syslog-ng -y
 
@@ -53,3 +52,20 @@ sudo touch /var/log/syslog-ng/logs.txt
 sudo systemctl start syslog-ng
 sudo systemctl enable syslog-ng
 
+
+#instal saltstack master
+
+wget -O - https://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add –
+
+echo “deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest bionic main” >> /etc/apt/sources.list.d/saltstack.list
+
+sed -I ‘s/deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main/ deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest bionic main/g’ /etc/salt/master
+
+sudo apt-get update
+sudo apt-get install salt-master -y
+sudo apt-get install salt-ssh -y
+sudo apt-get install salt-syndic -y
+sudo apt-get install salt-api -y
+sudo apt-get install salt-cloud -y
+
+sudo apt-get upgrade -y
