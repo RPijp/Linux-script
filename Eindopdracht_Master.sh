@@ -57,9 +57,9 @@ sudo systemctl enable syslog-ng
 
 wget -O - https://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add –
 
-echo “deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest bionic main” >> /etc/apt/sources.list.d/saltstack.list
+echo deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest bionic main >> /etc/apt/sources.list.d/saltstack.list
 
-sed -I ‘s/deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main/ deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest bionic main/g’ /etc/salt/master
+#sed -I ‘s/deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main/ deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest bionic main/g’ /etc/salt/master
 
 sudo apt-get update
 sudo apt-get install salt-master -y
