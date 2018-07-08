@@ -6,8 +6,8 @@
 apt-get update
 apt-get upgrade
 
-apt-get install snmpd snmp mysql-server apache2 libapache2-mod-php5 \
-php5-mysql php5-cli php5-snmp
+apt-get install snmpd snmp apache2 libapache2-mod-php5 \
+php5-cli php5-snmp
 
 apt-get install cacti -y
 
