@@ -4,7 +4,7 @@
 #instal monitoring in de form van Cacti
 
 apt-get update
-apt-get upgrade
+apt-get upgrade -y
 
 apt-get install snmpd snmp apache2 libapache2-mod-php5 \
 php5-cli php5-snmp
