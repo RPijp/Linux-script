@@ -35,7 +35,21 @@ apt-get install cacti -y
 apt-get install snmp snmpd -y
 
 #####
-apt-get install cacti-spine -y
+#apt-get install cacti-spine -y
+#####
+
+######
+##Instal Cacti on minion##
+
+salt '*' cmd.run 'sudo apt-get install snmpd snmp apache2 libapache2-mod-php5 \
+php5-cli php5-snmp'
+
+salt '*' cmd.run 'sudo apt-get install cacti -y'
+
+salt '*' cmd.run 'sudo apt-get install snmp snmpd -y'
+
+#####
+#apt-get install cacti-spine -y
 #####
 
 #instal logs in de vorm van Syslog-NG Master
@@ -72,3 +86,21 @@ sudo touch /var/log/syslog-ng/logs.txt
 
 sudo systemctl start syslog-ng
 sudo systemctl enable syslog-ng
+
+######
+##Instal Syslog-NG Minion on minion##
+
+salt '*' cmd.run 'sudo apt install syslog-ng -y'
+
+salt '*' cmd.run 'cat <<EOT >> /etc/syslog/syslog-ng.conf
+@version: 3.5
+@include "scl.conf"
+@include "`scl-root`/system/tty10.conf"
+source s_local { system(); internal(); };
+destination d_syslog_tcp {
+        syslog("10.0.61.6" transport("tcp") port(514)); };
+log { source(s_local);destination(d_syslog_tcp); };
+EOT'
+
+salt '*' cmd.run 'sudo systemctl start syslog-ng'
+salt '*' cmd.run 'sudo systemctl enable syslog-ng'
