@@ -23,6 +23,8 @@ salt-key
 
 salt-key -A
 
+sleep 2
+
 salt-master
 
 #instal monitoring in de form van Cacti
