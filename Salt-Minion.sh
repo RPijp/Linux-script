@@ -15,7 +15,7 @@ sudo apt-get install salt-minion -y
 
 sudo apt-get upgrade -y
 
-echo master: 10.0.61.6 >> /etc/salt/minion
+echo master: 10.0.0.5 >> /etc/salt/minion
 
 sudo systemctl restart salt-minion
 
