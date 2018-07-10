@@ -15,7 +15,7 @@ sudo apt-get install salt-master -y
 
 sudo apt-get upgrade -y
 
-echo interface: 10.0.61.6 >> /etc/salt/master
+echo interface: 10.0.0.5 >> /etc/salt/master
 
 sudo systemctl restart salt-master
 
@@ -32,9 +32,18 @@ salt-master
 apt-get install snmpd snmp apache2 libapache2-mod-php5 \
 php5-cli php5-snmp
 
+echo ""
+echo ""
+
 apt-get install cacti -y
 
+echo ""
+echo ""
+
 apt-get install snmp snmpd -y
+
+echo ""
+echo ""
 
 #####
 #apt-get install cacti-spine -y
@@ -46,9 +55,18 @@ apt-get install snmp snmpd -y
 salt '*' cmd.run 'sudo apt-get install snmpd snmp apache2 libapache2-mod-php5 \
 php5-cli php5-snmp'
 
+salt '*' cmd.run 'echo ""'
+salt '*' cmd.run 'echo ""'
+
 salt '*' cmd.run 'sudo apt-get install cacti -y'
 
+salt '*' cmd.run 'echo ""'
+salt '*' cmd.run 'echo ""'
+
 salt '*' cmd.run 'sudo apt-get install snmp snmpd -y'
+
+salt '*' cmd.run 'echo ""'
+salt '*' cmd.run 'echo ""'
 
 #####
 #apt-get install cacti-spine -y
@@ -100,7 +118,7 @@ salt '*' cmd.run 'cat <<EOT >> /etc/syslog/syslog-ng.conf
 @include "`scl-root`/system/tty10.conf"
 source s_local { system(); internal(); };
 destination d_syslog_tcp {
-        syslog("10.0.61.6" transport("tcp") port(514)); };
+        syslog("10.0.0.5" transport("tcp") port(514)); };
 log { source(s_local);destination(d_syslog_tcp); };
 EOT'
 
