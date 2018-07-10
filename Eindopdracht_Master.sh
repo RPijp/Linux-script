@@ -21,7 +21,7 @@ sudo systemctl restart salt-master
 
 salt-key
 
-salt-key -A
+salt-key -Ay
 
 sleep 2
 
