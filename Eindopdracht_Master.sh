@@ -32,45 +32,20 @@ salt-master
 apt-get install snmpd snmp apache2 libapache2-mod-php5 \
 php5-cli php5-snmp
 
-echo ""
-echo ""
-
 apt-get install cacti -y
-
-echo ""
-echo ""
 
 apt-get install snmp snmpd -y
 
-echo ""
-echo ""
-
-#####
-#apt-get install cacti-spine -y
-#####
 
 ######
 ##Instal Cacti on minion##
 
-salt '*' cmd.run 'sudo apt-get install snmpd snmp apache2 libapache2-mod-php5 \
+salt '*' cmd.run 'sudo apt install snmpd snmp apache2 libapache2-mod-php5 \
 php5-cli php5-snmp'
 
-salt '*' cmd.run 'echo ""'
-salt '*' cmd.run 'echo ""'
+salt '*' cmd.run 'sudo apt install cacti -y'
 
-salt '*' cmd.run 'sudo apt-get install cacti -y'
-
-salt '*' cmd.run 'echo ""'
-salt '*' cmd.run 'echo ""'
-
-salt '*' cmd.run 'sudo apt-get install snmp snmpd -y'
-
-salt '*' cmd.run 'echo ""'
-salt '*' cmd.run 'echo ""'
-
-#####
-#apt-get install cacti-spine -y
-#####
+salt '*' cmd.run 'sudo apt install snmp snmpd -y'
 
 #instal logs in de vorm van Syslog-NG Master
 
