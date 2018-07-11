@@ -106,3 +106,29 @@ sudo rsync -av wordpress/* /var/www/html/
 
 sudo chown -R www-data:www-data /var/www/html/
 sudo chmod -R 755 /var/www/html/
+
+#install wordpress on minion
+
+salt '*' cmd.run 'wget -c http://wordpress.org/latest.tar.gz' 
+salt '*' cmd.run 'tar -xzvf latest.tar.gz' 
+
+salt '*' cmd.run 'sudo rsync -av wordpress/* /var/www/html/' 
+
+salt '*' cmd.run 'sudo chown -R www-data:www-data /var/www/html/' 
+salt '*' cmd.run 'sudo chmod -R 755 /var/www/html/' 
+
+#install docker
+
+sudo apt-get update
+
+sudo apt-get install \
+apt-transport-https \
+ca-certificates \
+curl \
+software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add
+
+apt-get install docker-ce -y
+
+sudo docker run hello-world
