@@ -41,11 +41,7 @@ apt-get install snmp snmpd -y
 ##Instal Cacti on minion##
 
 salt '*' cmd.run 'sudo apt install snmpd snmp apache2 libapache2-mod-php5 \
-php5-cli php5-snmp'
-
-salt '*' cmd.run 'sudo apt install cacti -y'
-
-salt '*' cmd.run 'sudo apt install snmp snmpd -y'
+php5-cli php5-snmp -y'
 
 #instal logs in de vorm van Syslog-NG Master
 
@@ -99,3 +95,14 @@ EOT'
 
 salt '*' cmd.run 'sudo systemctl start syslog-ng'
 salt '*' cmd.run 'sudo systemctl enable syslog-ng'
+
+
+#Install wordpress
+
+wget -c http://wordpress.org/latest.tar.gz
+tar -xzvf latest.tar.gz
+
+sudo rsync -av wordpress/* /var/www/html/
+
+sudo chown -R www-data:www-data /var/www/html/
+sudo chmod -R 755 /var/www/html/
