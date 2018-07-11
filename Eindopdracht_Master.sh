@@ -76,7 +76,7 @@ salt '*' cmd.run 'echo ""'
 
 sudo apt install syslog-ng -y
 
-cat <<EOT >> /etc/syslog/syslog-ng.conf
+cat <<EOT >> /etc/syslog-ng/syslog-ng.conf
 @version: 3.5
 @include "scl.conf"
 @include "`scl-root`/system/tty10.conf"
@@ -112,7 +112,7 @@ sudo systemctl enable syslog-ng
 
 salt '*' cmd.run 'sudo apt install syslog-ng -y'
 
-salt '*' cmd.run 'cat <<EOT >> /etc/syslog/syslog-ng.conf
+salt '*' cmd.run 'cat <<EOT >> /etc/syslog-ng/syslog-ng.conf
 @version: 3.5
 @include "scl.conf"
 @include "`scl-root`/system/tty10.conf"
