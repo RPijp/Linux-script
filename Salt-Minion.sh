@@ -21,3 +21,13 @@ sudo systemctl restart salt-minion
 
 salt-minion
 
+
+
+#Cacti voor minion
+
+apt-get install snmpd snmp apache2 libapache2-mod-php5 \
+php5-cli php5-snmp
+
+apt-get install cacti -y
+
+apt-get install snmp snmpd -y
